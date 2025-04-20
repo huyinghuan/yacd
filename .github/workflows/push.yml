@@ -1,4 +1,8 @@
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 name: Deploy workflow
 concurrency:
   group: build-${{ github.ref }}

@@ -30,8 +30,10 @@ jobs:
         id: revparse
         run: |
           echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Install deps
+        run: npm install --legacy-peer-deps
       - name: Build
-        run: npm install && npm run build
+        run: npm run build
       - name: Create Release
         if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/')
         id: create_release
